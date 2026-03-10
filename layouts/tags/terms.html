@@ -1,0 +1,46 @@
+{{- define "main" -}}
+<h1>Categories</h1>
+<p>All datastores and topics covered on this site. Categories are sized by number of published issues.</p>
+
+<div class="tag-cloud" style="margin: 2rem 0;">
+  {{- $maxCount := 0 -}}
+  {{- range $name, $taxonomy := .Site.Taxonomies.tags -}}
+  {{- if gt .Count $maxCount -}}
+  {{- $maxCount = .Count -}}
+  {{- end -}}
+  {{- end -}}
+
+  {{- range $name, $taxonomy := .Site.Taxonomies.tags -}}
+  {{- $count := .Count -}}
+  {{- $fontSize := 0.9 -}}
+  {{- if gt $maxCount 1 -}}
+  {{- $ratio := div (mul $count 100.0) $maxCount -}}
+  {{- $fontSize = add 0.9 (mul (div $ratio 100.0) 1.5) -}}
+  {{- end -}}
+  <a href="{{ .Page.Permalink }}"
+    style="font-size: {{ $fontSize }}rem; margin: 0.3rem; display: inline-block; color: var(--fg-dim); text-decoration: none; transition: color 0.2s;"
+    onmouseover="this.style.color='var(--fg)'" onmouseout="this.style.color='var(--fg-dim)'" title="{{ $count }} posts">
+    #{{ $name }}<span style="font-size: 0.75rem; vertical-align: super;">{{ $count }}</span>
+  </a>
+  {{- end -}}
+</div>
+
+<h2 style="margin-top: 3rem;">All Categories (Alphabetical)</h2>
+<div style="margin-top: 1rem;">
+  {{- range $name, $taxonomy := .Site.Taxonomies.tags -}}
+  <div style="padding: 0.5rem 0; border-bottom: 1px solid var(--bg-alt);">
+    <a href="{{ .Page.Permalink }}" style="text-decoration: none;">
+      <span style="font-weight: 600;">#{{ $name }}</span>
+      <span style="color: var(--fg-dim); margin-left: 1rem;">{{ .Count }} {{ if eq .Count 1 }}post{{ else }}posts{{ end
+        }}</span>
+    </a>
+  </div>
+  {{- end -}}
+</div>
+{{- end -}}
+
+{{- define "side" -}}
+<aside id="side-pane">
+  {{- partial "side/list.html" . -}}
+</aside>
+{{- end -}}

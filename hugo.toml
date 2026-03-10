@@ -1,0 +1,75 @@
+baseURL = 'https://datastore.news/'
+languageCode = 'en-us'
+title = 'Datastore News'
+theme = 'rusty-typewriter'
+enableRobotsTXT = true
+
+[params]
+description = 'Weekly intelligence on databases and data infrastructure—featuring dedicated columns on DynamoDB, PostgreSQL, ValKey, and other modern data technologies, plus a sharp editorial perspective on emerging trends and architecture.'
+# keywords = ['databases', 'datastores', 'data infrastructure', 'weekly news', 'dynamodb']
+dateFormat = 'January 2, 2006'
+
+[params.author]
+name = 'datastore.news'
+
+[params.rtwt]
+searchPath = 'search'
+countPageItems = 20
+
+[params.rtwt.home]
+showBio = true
+showAuthorImg = false
+showRecent = false
+showFeatured = false
+
+[params.rtwt.side.home]
+taxonomies = ['tags']
+countTaxonomy = 15
+
+[taxonomies]
+tag = 'tags'
+
+[[menus.main]]
+name = 'Under the Hood'
+pageRef = '/editorial'
+weight = 1
+
+[[menus.main]]
+name = 'Datastores'
+pageRef = '/datastores'
+weight = 2
+
+[[menus.main]]
+name = 'Categories'
+pageRef = '/tags'
+weight = 3
+
+[[menus.main]]
+name = 'Search'
+pageRef = '/search'
+weight = 4
+
+#[[menus.main]]
+#name = 'About'
+#pageRef = '/about'
+#weight = 5
+
+# Build search index
+[outputFormats]
+ [outputFormats.SearchIndex]
+  mediaType = "application/json"
+  baseName = "searchindex"
+  isPlainText = true
+  notAlternative = true
+
+[mediaTypes]
+ [mediaTypes."application/json"]
+  suffixes = ["json"]
+
+[outputs]
+ home = ["HTML","RSS","SearchIndex"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

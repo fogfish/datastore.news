@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://tech.fog.fish/sitemap.xml

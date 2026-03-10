@@ -1,0 +1,32 @@
+{{- $columns := .Sections | complement (where .Sections "Pages" nil) -}}
+{{- if $columns -}}
+<h2>Datastore Technology</h2>
+<div class="columns-grid">
+  {{- range sort $columns "Title" -}}
+  {{- $latest := first 1 .Pages -}}
+  <div class="column-card">
+    <div class="column-card-header">
+      <h3 class="column-card-title">
+        <a href="{{- .Permalink -}}">{{- .Title -}}</a>
+      </h3>
+    </div>
+    {{- if .Description -}}
+    <p class="column-card-desc dim">{{- .Description | truncate 120 -}}</p>
+    {{- end -}}
+    <div class="column-card-latest">
+      {{- range $latest -}}
+      <a class="column-latest-link" href="{{- .Permalink -}}">{{- .LinkTitle -}}</a>
+      <time class="text-sm dim column-latest-date" datetime="{{- .Date | time.Format " 2006-01-02" -}}">
+        {{- dateFormat (or site.Params.dateFormat "Jan 2, 2006") .Date -}}
+      </time>
+      {{- else -}}
+      <span class="dim text-sm">No issues yet</span>
+      {{- end -}}
+    </div>
+    <div class="column-card-footer">
+      <a class="text-sm" href="{{- .Permalink -}}">All issues &rarr;</a>
+    </div>
+  </div>
+  {{- end -}}
+</div>
+{{- end -}}
