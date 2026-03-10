@@ -1,4 +1,4 @@
-# Engineering & Research Notes
+# Datastore.News
 
 Weekly intelligence on databases and data infrastructure—featuring dedicated columns on DynamoDB, PostgreSQL, ValKey, and other modern data technologies, plus a sharp editorial perspective on emerging trends and architecture.
 
