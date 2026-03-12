@@ -10,27 +10,27 @@
   </div>
 </div>
 <script>
-(function () {
-  var banner = document.getElementById('cookie-banner');
-  var consent = typeof Storage !== 'undefined' ? localStorage.getItem('ga_consent') : null;
+  (function () {
+    var banner = document.getElementById('cookie-banner');
+    var consent = typeof Storage !== 'undefined' ? localStorage.getItem('ga_consent') : null;
 
-  if (!consent) {
-    banner.classList.add('cookie-banner--visible');
-  }
-
-  document.getElementById('cookie-accept').addEventListener('click', function () {
-    if (typeof Storage !== 'undefined') localStorage.setItem('ga_consent', 'granted');
-    if (typeof gtag === 'function') {
-      gtag('consent', 'update', { analytics_storage: 'granted' });
-      gtag('event', 'page_view');
+    if (!consent) {
+      banner.classList.add('cookie-banner--visible');
     }
-    banner.classList.remove('cookie-banner--visible');
-  });
 
-  document.getElementById('cookie-decline').addEventListener('click', function () {
-    if (typeof Storage !== 'undefined') localStorage.setItem('ga_consent', 'denied');
-    banner.classList.remove('cookie-banner--visible');
-  });
-})();
+    document.getElementById('cookie-accept').addEventListener('click', function () {
+      if (typeof Storage !== 'undefined') localStorage.setItem('ga_consent', 'granted');
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+        gtag('event', 'page_view');
+      }
+      banner.classList.remove('cookie-banner--visible');
+    });
+
+    document.getElementById('cookie-decline').addEventListener('click', function () {
+      if (typeof Storage !== 'undefined') localStorage.setItem('ga_consent', 'denied');
+      banner.classList.remove('cookie-banner--visible');
+    });
+  })();
 </script>
 {{- end -}}

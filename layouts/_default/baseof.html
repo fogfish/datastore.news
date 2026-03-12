@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+
 <head>
   {{ partial "head.html" . }}
 </head>
+
 <body class="notransition">
   <div id="container">
     <header id="main-header">
@@ -18,10 +20,11 @@
         </footer>
       </div>
       {{- if (and (default true .Params.rtwt.sidePane) site.Params.rtwt.sidePane) -}}
-        {{- block "side" . -}}{{- end -}}
+      {{- block "side" . -}}{{- end -}}
       {{- end -}}
     </div>
   </div>
   {{- partial "cookie-consent.html" . -}}
 </body>
+
 </html>
