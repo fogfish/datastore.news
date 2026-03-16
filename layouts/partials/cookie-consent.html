@@ -6,7 +6,7 @@
   </p>
   <div class="cookie-banner__actions">
     <button id="cookie-accept" class="cookie-banner__btn cookie-banner__btn--accept">Accept</button>
-    <button id="cookie-decline" class="cookie-banner__btn cookie-banner__btn--decline">Decline</button>
+    <!-- <button id="cookie-decline" class="cookie-banner__btn cookie-banner__btn--decline">Decline</button> -->
   </div>
 </div>
 <script>
@@ -27,10 +27,10 @@
       banner.classList.remove('cookie-banner--visible');
     });
 
-    document.getElementById('cookie-decline').addEventListener('click', function () {
-      if (typeof Storage !== 'undefined') localStorage.setItem('ga_consent', 'denied');
-      banner.classList.remove('cookie-banner--visible');
-    });
+    // document.getElementById('cookie-decline').addEventListener('click', function () {
+    //   if (typeof Storage !== 'undefined') localStorage.setItem('ga_consent', 'denied');
+    //   banner.classList.remove('cookie-banner--visible');
+    // });
   })();
 </script>
 {{- end -}}

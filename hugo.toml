@@ -6,6 +6,7 @@ enableRobotsTXT = true
 
 [params]
 description = 'Weekly intelligence on databases and data infrastructure—featuring dedicated columns on DynamoDB, PostgreSQL, ValKey, and other modern data technologies, plus a sharp editorial perspective on emerging trends and architecture.'
+images = ['https://datastore.news/icon.png']
 # keywords = ['databases', 'datastores', 'data infrastructure', 'weekly news', 'dynamodb']
 dateFormat = 'January 2, 2006'
 googleAnalyticsID = 'G-JNG0PQJWL2'
