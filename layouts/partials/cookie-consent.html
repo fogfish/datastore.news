@@ -1,36 +1,47 @@
 {{- with site.Params.googleAnalyticsID -}}
 <div id="cookie-banner" role="dialog" aria-label="Cookie notice" aria-live="polite">
   <p class="cookie-banner__text">
-    This site uses analytics cookies to understand how visitors use it.
-    By clicking <strong>Accept</strong> you consent to their use.
+    This website uses analytics cookies to measure how our content performs and improve your experience.
+    Analytics will be enabled in <strong id="cookie-countdown">7</strong> seconds unless you leave the site.
   </p>
   <div class="cookie-banner__actions">
-    <button id="cookie-accept" class="cookie-banner__btn cookie-banner__btn--accept">Accept</button>
-    <!-- <button id="cookie-decline" class="cookie-banner__btn cookie-banner__btn--decline">Decline</button> -->
+    <button id="cookie-accept" class="cookie-banner__btn cookie-banner__btn--accept">Accept Now</button>
   </div>
 </div>
 <script>
   (function () {
     var banner = document.getElementById('cookie-banner');
+    var countdownEl = document.getElementById('cookie-countdown');
     var consent = typeof Storage !== 'undefined' ? localStorage.getItem('ga_consent') : null;
+    var countdown = 7;
+    var countdownTimer = null;
 
-    if (!consent) {
-      banner.classList.add('cookie-banner--visible');
-    }
-
-    document.getElementById('cookie-accept').addEventListener('click', function () {
+    function acceptConsent() {
+      if (countdownTimer) clearInterval(countdownTimer);
       if (typeof Storage !== 'undefined') localStorage.setItem('ga_consent', 'granted');
       if (typeof gtag === 'function') {
         gtag('consent', 'update', { analytics_storage: 'granted' });
         gtag('event', 'page_view');
       }
       banner.classList.remove('cookie-banner--visible');
-    });
+    }
 
-    // document.getElementById('cookie-decline').addEventListener('click', function () {
-    //   if (typeof Storage !== 'undefined') localStorage.setItem('ga_consent', 'denied');
-    //   banner.classList.remove('cookie-banner--visible');
-    // });
+    if (!consent) {
+      banner.classList.add('cookie-banner--visible');
+
+      countdownTimer = setInterval(function () {
+        countdown--;
+        if (countdownEl) countdownEl.textContent = countdown;
+
+        if (countdown <= 0) {
+          acceptConsent();
+        }
+      }, 1000);
+    }
+
+    document.getElementById('cookie-accept').addEventListener('click', function () {
+      acceptConsent();
+    });
   })();
 </script>
 {{- end -}}
