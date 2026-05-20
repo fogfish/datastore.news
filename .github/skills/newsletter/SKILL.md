@@ -7,7 +7,7 @@ This repository is a collection of weekly newsletters covering developments in v
 
 Its content is stored in the `content/datastores` directory, organized by datastore type and date. Each newsletter is a markdown file containing a summary of key developments, insights, and links to relevant resources.
 
-Your task is to find all latest newsletters and write a concise, engaging article for LinkedIn based on their content. The article should highlight key insights and developments from the newsletters while including a link to datastore.news for readers to explore further.
+Your task is to find all latest newsletters and write a concise, engaging article for LinkedIn based on their content. The article MUST highlight high-level key insights and developments from the newsletters while including a link to datastore.news for readers to explore further. The purpose of the news letter to drive traffic to datastore.news, so make sure to include a call to action for readers to visit the site for more in-depth information.
 
 Note: the user might provide a specific date or datastore type to focus on, so be sure to check for that in the user's request before writing the article.
 

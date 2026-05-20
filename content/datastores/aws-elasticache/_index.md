@@ -1,5 +1,5 @@
 ---
-title: "AWS RDS"
+title: "AWS ElastiCache"
 # description: "Weekly coverage of Amazon DynamoDB — data modeling patterns, capacity planning and everything happening in the DynamoDB ecosystem."
-tags: ["AWS RDS", "AWS Aurora"]
+tags: ["AWS ElastiCache"]
 ---
